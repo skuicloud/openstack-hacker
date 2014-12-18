@@ -51,6 +51,9 @@ for LOCAL_IMAGE in $IMAGES; do
        
         # export-diff the snapshot from last one
         LAST_SNAP=`ls $IMAGE_DIR -1 -rt |tail -n 1|awk -F_ '{print $2}'`
+        if [[ $LATEST_SNAP == $LAST_SNAP ]]; then
+                continue
+        fi  
         echo "rbd export-diff --from-snap $LAST_SNAP $SOURCEPOOL/$LOCAL_IMAGE@$LATEST_SNAP \
                                           $IMAGE_DIR/${LAST_SNAP}_${LATEST_SNAP}" >>$LOG_FILE
         rbd export-diff --from-snap $LAST_SNAP $SOURCEPOOL/$LOCAL_IMAGE@$LATEST_SNAP \
