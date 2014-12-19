@@ -87,13 +87,8 @@ rbd image 'volume-a58d5eba-f39f-4a21-8b33-2da155b01e6d':
 	features: layering
 
 # rbd snap ls volumes/volume-9e1c2f48-ed32-4e7c-8a5b-1334f1625f2e
-SNAPID NAME                                             SIZE 
-   136 snapshot-fe468392-22c7-4936-8637-86589d3b4376 2048 MB 
-
 # rbd snap ls volumes/volume-a58d5eba-f39f-4a21-8b33-2da155b01e6d 
-SNAPID NAME                                             SIZE 
-   137 snapshot-19116729-4469-47d6-bd45-d37a0529dbfd 3072 MB 
-
+// all snapshots are purged.
 
 # cinder show 9e1c2f48-ed32-4e7c-8a5b-1334f1625f2e 
 +--------------------------------+--------------------------------------+
@@ -147,4 +142,8 @@ SNAPID NAME                                             SIZE
 
 # cinder snapshot-list |grep a58d5eba-f39f-4a21-8b33-2da155b01e6d
 # cinder snapshot-list |grep 9e1c2f48-ed32-4e7c-8a5b-1334f1625f2e 
-// nothing here, no need to create snapshot via cinderclient
+// nothing here
+
+# cinder delete a58d5eba-f39f-4a21-8b33-2da155b01e6d
+# cinder delete 9e1c2f48-ed32-4e7c-8a5b-1334f1625f2e
+// the new volumes can be deleted correctly. Test only.
