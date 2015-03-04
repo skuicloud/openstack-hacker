@@ -1,0 +1,3 @@
+Initially, OpenStack is deployed without LDAP,
+after LDAP is connected, create tenant and net
+for all the LDAP account.
