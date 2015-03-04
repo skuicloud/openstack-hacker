@@ -1,0 +1,1 @@
+0 14 * * *   cd /root/DBBackUp/;/bin/sh backUpDB.sh >> /var/log/dbbackUpJob.log 2>&1
