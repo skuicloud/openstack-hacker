@@ -1,0 +1,16 @@
+    "ceph": {
+      "radosgw domain": "lc003",
+      "config": {
+        "fsid": "71fc3205-ce61-4e2e-b7f9-05fd59f8c6dd",
+        "global": {
+          "public network": "10.1.0.0/16",
+          "cluster network": "10.2.0.0/16",
+          "osd pool default pg num": "1024",
+          "osd pool default pgp num": "1024",
+          "osd pool default size": "3"
+        },
+        "osd": {
+          "osd journal size": "10000"
+        }
+      }
+    }

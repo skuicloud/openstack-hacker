@@ -1,0 +1,373 @@
+{
+  "name": "tsinghua-ceph",
+  "description": "Environment used for Tsinghua openstack+ceph deployment",
+  "cookbook_versions": {
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "yum": {
+      "centos": {
+        "repo_host": "10.1.4.65"
+      },
+      "erlang_solutions": {
+        "baseurl": "http://10.1.4.65/erlang_solutions/centos/6/$basearch",
+        "gpgkey": "http://10.1.4.65/erlang_solutions/erlang_solutions.asc"
+      }
+    },
+    "ceph": {
+      "keystone environment": "tsinghua-ceph",
+      "radosgw domain": "n104",
+      "rhel": {
+        "stable": {
+          "repository": "http://10.1.4.65/ceph/el6/x86_64",
+          "repository_key": "http://10.1.4.65/ceph/release.asc"
+        },
+        "extras": {
+          "repository": "http://10.1.4.65/ceph-extra/rpm/centos6.4/x86_64/"
+        }
+      },
+      "is_keystone_integration": true,
+      "HDD_devices": [
+        "sda",
+        "sdb",
+        "sdc",
+        "sdd"
+      ],
+      "config": {
+        "fsid": "fc9944b6-5563-4d3c-b2f1-133b300f4399",
+        "global": {
+          "public network": "10.6.0.0/16",
+          "cluster network": "10.8.0.0/16",
+          "osd pool default pg num": "4096",
+          "osd pool default pgp num": "4096",
+          "osd pool default size": "3"
+        },
+        "osd": {
+          "osd journal size": "10000"
+        }
+      }
+    },
+    "memcached": {
+      "bind_interface": "eth0"
+    },
+    "mysql": {
+      "server_root_password": "root",
+      "server_debian_password": "root",
+      "server_repl_password": "root",
+      "allow_remote_root": true,
+      "root_network_acl": "%"
+    },
+    "haproxy": {
+      "incoming_address": "10.1.1.250"
+    },
+    "keepalived": {
+      "vip": {
+        "ipaddress": "10.1.1.250",
+        "interface": "eth0"
+      }
+    },
+    "openstack": {
+      "auth": {
+        "validate_certs": false
+      },
+      "block-storage": {
+        "syslog": {
+          "use": false
+        },
+        "api": {
+          "ratelimit": "False"
+        },
+        "debug": false,
+        "volume": {
+          "driver": "cinder.volume.drivers.rbd.RBDDriver"
+        },
+        "rbd_pool": "volumes",
+        "rbd_secret_uuid": "446af307-00ad-473a-95fa-fc70942ede07",
+        "rbd_ceph_conf": "/etc/ceph/ceph.conf",
+        "rbd_flatten_volume_from_snapshot": false,
+        "rbd_max_clone_depth": 5,
+        "glance_api_version": 2
+      },
+      "dashboard": {
+        "use_ssl": "false"
+      },
+      "compute": {
+        "syslog": {
+          "use": false
+        },
+        "libvirt": {
+          "bind_interface": "eth0",
+          "images_type": "default",
+          "images_rbd_pool": "vms"
+        },
+        "novnc_proxy": {
+          "bind_interface": "eth0"
+        },
+        "ratelimit": {
+          "api": {
+            "enabled": false
+          },
+          "volume": {
+            "enabled": false
+          }
+        },
+        "network": {
+          "service_type": "neutron"
+        }
+      },
+      "network": {
+        "verbose": "False",
+        "debug": "False",
+        "service_plugins": [
+          "router"
+        ],
+        "ml2": {
+          "type_drivers": "local,flat,vlan,gre",
+          "tenant_network_types": "vlan,gre",
+          "network_vlan_ranges": "physnet1:1000:2999",
+          "enable_security_group": "True"
+        },
+        "openvswitch": {
+          "tenant_network_type": "vlan",
+          "network_vlan_ranges": "physnet1:1000:2999",
+          "bridge_mappings": "physnet1:br-eth5",
+          "fw_driver": "neutron.agent.firewall.NoopFirewallDriver"
+        }
+      },
+      "db": {
+        "bind_interface": "eth0",
+        "compute": {
+          "host": "10.1.0.76"
+        },
+        "identity": {
+          "host": "10.1.0.76"
+        },
+        "image": {
+          "host": "10.1.0.76"
+        },
+        "network": {
+          "host": "10.1.0.76"
+        },
+        "volume": {
+          "host": "10.1.0.76"
+        },
+        "dashboard": {
+          "host": "10.1.0.76"
+        }
+      },
+      "developer_mode": true,
+      "endpoints": {
+        "db": {
+          "host": "10.1.0.76"
+        },
+        "mq": {
+          "host": "10.1.0.76"
+        },
+        "compute-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "8774",
+          "path": "/v2/%(tenant_id)s"
+        },
+        "compute-api-bind": {
+          "bind_interface": "eth0"
+        },
+        "compute-ec2-admin": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "8773",
+          "path": "/services/Admin"
+        },
+        "compute-ec2-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "8773",
+          "path": "/services/Cloud"
+        },
+        "compute-novnc": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "6080",
+          "path": "/vnc_auto.html"
+        },
+        "compute-novnc-bind": {
+          "bind_interface": "eth0"
+        },
+        "compute-vnc-bind": {
+          "bind_interface": "eth0"
+        },
+        "image-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "9292",
+          "path": "/v2"
+        },
+        "image-api-bind": {
+          "bind_interface": "eth0"
+        },
+        "image-registry": {
+          "bind_interface": "eth0"
+        },
+        "image-registry-bind": {
+          "bind_interface": "eth0"
+        },
+        "identity-bind": {
+          "bind_interface": "eth0"
+        },
+        "identity-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "5000",
+          "path": "/v2.0"
+        },
+        "identity-admin": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "35357",
+          "path": "/v2.0"
+        },
+        "block-storage-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "8776",
+          "path": "/v1/%(tenant_id)s"
+        },
+        "block-storage-api-bind": {
+          "bind_interface": "eth0"
+        },
+        "telemetry-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "8777",
+          "path": "/v1"
+        },
+        "network-api": {
+          "host": "10.1.1.250",
+          "scheme": "http",
+          "port": "9696",
+          "path": ""
+        },
+        "network-api-bind": {
+          "bind_interface": "eth0"
+        },
+        "network-openvswitch": {
+          "bind_interface": "eth5"
+        }
+      },
+      "identity": {
+        "identity": {
+          "backend": "ldap"
+        },
+        "ldap": {
+          "url": "ldap://10.1.0.201",
+          "user": "cn=Manager,dc=iiis,dc=co",
+          "password": "iiis123456",
+          "suffix": "dc=iiis,dc=co",
+          "use_dumb_member": "False",
+          "page_size": 0,
+          "alias_dereferencing": "default",
+          "query_scope": "one",
+          "user_tree_dn": "ou=users,dc=iiis,dc=co",
+          "user_objectclass": "organizationalPerson",
+          "user_id_attribute": "cn",
+          "user_name_attribute": "cn",
+          "user_mail_attribute": "email",
+          "user_pass_attribute": "userPassword",
+          "user_domain_id_attribute": "businessCategory",
+          "user_enabled_mask": 0,
+          "user_enabled_default": "True",
+          "user_attribute_ignore": "tenant_id,tenants",
+          "user_allow_create": "False",
+          "user_allow_update": "False",
+          "user_allow_delete": "False",
+          "user_enabled_emulation": "False",
+          "tenant_objectclass": "groupOfNames",
+          "tenant_id_attribute": "cn",
+          "tenant_member_attribute": "member",
+          "tenant_name_attribute": "ou",
+          "tenant_desc_attribute": "description",
+          "tenant_enabled_attribute": "enabled",
+          "tenant_domain_id_attribute": "businessCategory",
+          "tenant_allow_create": "False",
+          "tenant_allow_update": "False",
+          "tenant_allow_delete": "False",
+          "tenant_enabled_emulation": "False",
+          "role_objectclass": "organizationalRole",
+          "role_id_attribute": "cn",
+          "role_name_attribute": "ou",
+          "role_member_attribute": "roleOccupant",
+          "role_allow_create": "False",
+          "role_allow_update": "False",
+          "role_allow_delete": "False",
+          "group_objectclass": "groupOfNames",
+          "group_id_attribute": "cn",
+          "group_name_attribute": "ou",
+          "group_member_attribute": "member",
+          "group_desc_attribute": "description",
+          "group_domain_id_attribute": "businessCategory",
+          "group_allow_create": "False",
+          "group_allow_update": "False",
+          "group_allow_delete": "False"
+        },
+        "admin_user": "admin",
+        "bind_interface": "eth0",
+        "catalog": {
+          "backend": "sql"
+        },
+        "debug": false,
+        "roles": [
+          "admin",
+          "member"
+        ],
+        "syslog": {
+          "use": false
+        },
+        "tenants": [
+          "admin",
+          "service"
+        ],
+        "users": {
+          "admin": {
+            "password": "admin",
+            "default_tenant": "admin",
+            "roles": {
+              "admin": [
+                "admin"
+              ]
+            }
+          }
+        }
+      },
+      "image": {
+        "api": {
+          "bind_interface": "eth0",
+          "default_store": "rbd"
+        },
+        "debug": false,
+        "registry": {
+          "bind_interface": "eth0"
+        },
+        "syslog": {
+          "use": false
+        },
+        "upload_image": {
+          "cirros": "http://download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img"
+        },
+        "upload_images": [
+          "cirros"
+        ]
+      },
+      "mq": {
+        "user": "guest",
+        "password": "guest",
+        "vhost": "/nova",
+        "network": {
+          "service_type": "rabbitmq"
+        }
+      }
+    }
+  }
+}

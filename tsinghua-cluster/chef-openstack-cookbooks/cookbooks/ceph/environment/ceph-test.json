@@ -1,0 +1,37 @@
+{
+  "name": "test_ceph_env",
+  "description": "",
+  "cookbook_versions": {
+    "ceph": "~> 0.2.1"
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "ceph": {
+      "keystone environment": "openstack-ceph",
+      "config": {
+        "fsid": "71fc3205-ce61-4e2e-b7f9-05fd59f8c6dd",
+        "global": {
+          "public network": "10.1.0.0/16",
+          "cluser network": "10.2.0.0/16",
+          "auth cluster required": "cephx",
+          "auth service required": "cephx",
+          "auth client required": "cephx",
+          "osd pool default pg num": "1024",
+          "osd pool default pgp num": "1024",
+          "osd pool default size": "3"
+        },
+        "mon": {
+          "debug mon": "20",
+          "debug paxos": "1/5",
+          "debug auth": "2"
+        },
+        "osd": {
+          "osd journal size": "10000"
+        }
+      }
+    }
+  },
+  "override_attributes": {
+  }
+}
