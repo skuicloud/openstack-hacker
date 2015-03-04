@@ -1,16 +1,23 @@
 #!/bin/bash
 
-host_ip_list=""
-for i in ${BASH_ARGV[@]} ; do 
-  host_ip="10.1.0.$i"
-  if test "$host_ip_list" != ""; then
-    host_ip_list="$host_ip,$host_ip_list"
-  else
-    host_ip_list="$host_ip"
-  fi
-done
+set -x
+cd /etc/udev/rules.d
 
-echo $host_ip_list
+rm -f  70-persistent-net.rules-orig
+cp -f 70-persistent-net.rules 70-persistent-net.rules-orig
 
-fab -u root -p root -H $host_ip_list eth_order
+sed -i -e 's:eth4:eth4-old:g' \
+       -e 's:eth5:eth5-old:g' \
+       -e 's:eth6:eth4:g' \
+       -e 's:eth7:eth5:g' \
+70-persistent-net.rules 
 
+
+sed -i -e 's:eth4-old:eth6:g' \
+       -e 's:eth5-old:eth7:g' \
+70-persistent-net.rules 
+
+
+diff 70-persistent-net.rules-orig 70-persistent-net.rules
+
+echo 
