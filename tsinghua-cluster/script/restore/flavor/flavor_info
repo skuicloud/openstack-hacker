@@ -1,0 +1,166 @@
+
++----------------------------+---------+
+| Property                   | Value   |
++----------------------------+---------+
+| OS-FLV-DISABLED:disabled   | False   |
+| OS-FLV-EXT-DATA:ephemeral  | 0       |
+| disk                       | 1       |
+| extra_specs                | {}      |
+| id                         | 1       |
+| name                       | m1.tiny |
+| os-flavor-access:is_public | True    |
+| ram                        | 512     |
+| rxtx_factor                | 1.0     |
+| swap                       |         |
+| vcpus                      | 1       |
++----------------------------+---------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 100                                  |
+| disk                       | 100                                  |
+| extra_specs                | {}                                   |
+| id                         | 18cc3cdd-258c-4b0f-bd89-20cbf468d024 |
+| name                       | matlab-largemem                      |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 100000                               |
+| rxtx_factor                | 1.0                                  |
+| swap                       | 16                                   |
+| vcpus                      | 16                                   |
++----------------------------+--------------------------------------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+| disk                       | 300                                  |
+| extra_specs                | {}                                   |
+| id                         | 1f1d3f48-ac6f-4dba-a130-7f08ae1204bd |
+| name                       | duan_memx                            |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 262144                               |
+| rxtx_factor                | 1.0                                  |
+| swap                       |                                      |
+| vcpus                      | 11                                   |
++----------------------------+--------------------------------------+
++----------------------------+----------+
+| Property                   | Value    |
++----------------------------+----------+
+| OS-FLV-DISABLED:disabled   | False    |
+| OS-FLV-EXT-DATA:ephemeral  | 0        |
+| disk                       | 20       |
+| extra_specs                | {}       |
+| id                         | 2        |
+| name                       | m1.small |
+| os-flavor-access:is_public | True     |
+| ram                        | 2048     |
+| rxtx_factor                | 1.0      |
+| swap                       |          |
+| vcpus                      | 1        |
++----------------------------+----------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+| disk                       | 150                                  |
+| extra_specs                | {}                                   |
+| id                         | 259eb375-909d-4d2c-8d82-f718dfeba9a8 |
+| name                       | m1.xlarge                            |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 65536                                |
+| rxtx_factor                | 1.0                                  |
+| swap                       | 65536                                |
+| vcpus                      | 8                                    |
++----------------------------+--------------------------------------+
++----------------------------+-----------+
+| Property                   | Value     |
++----------------------------+-----------+
+| OS-FLV-DISABLED:disabled   | False     |
+| OS-FLV-EXT-DATA:ephemeral  | 0         |
+| disk                       | 40        |
+| extra_specs                | {}        |
+| id                         | 3         |
+| name                       | m1.medium |
+| os-flavor-access:is_public | True      |
+| ram                        | 4096      |
+| rxtx_factor                | 1.0       |
+| swap                       |           |
+| vcpus                      | 2         |
++----------------------------+-----------+
++----------------------------+----------+
+| Property                   | Value    |
++----------------------------+----------+
+| OS-FLV-DISABLED:disabled   | False    |
+| OS-FLV-EXT-DATA:ephemeral  | 0        |
+| disk                       | 80       |
+| extra_specs                | {}       |
+| id                         | 4        |
+| name                       | m1.large |
+| os-flavor-access:is_public | True     |
+| ram                        | 8192     |
+| rxtx_factor                | 1.0      |
+| swap                       |          |
+| vcpus                      | 4        |
++----------------------------+----------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+| disk                       | 400                                  |
+| extra_specs                | {}                                   |
+| id                         | 7ebbe86f-69ce-473b-9296-95cfef8e6228 |
+| name                       | s1.large                             |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 32768                                |
+| rxtx_factor                | 1.0                                  |
+| swap                       | 65536                                |
+| vcpus                      | 16                                   |
++----------------------------+--------------------------------------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+| disk                       | 400                                  |
+| extra_specs                | {}                                   |
+| id                         | 8e068292-7838-4ce7-b54a-0c47aaa066df |
+| name                       | xx-large                             |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 120000                               |
+| rxtx_factor                | 1.0                                  |
+| swap                       | 120000                               |
+| vcpus                      | 11                                   |
++----------------------------+--------------------------------------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+| disk                       | 80                                   |
+| extra_specs                | {}                                   |
+| id                         | a7ba5f5e-e7a4-4fa2-bf1d-39b864756ec2 |
+| name                       | m1.s.highmem                         |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 8192                                 |
+| rxtx_factor                | 1.0                                  |
+| swap                       |                                      |
+| vcpus                      | 1                                    |
++----------------------------+--------------------------------------+
++----------------------------+--------------------------------------+
+| Property                   | Value                                |
++----------------------------+--------------------------------------+
+| OS-FLV-DISABLED:disabled   | False                                |
+| OS-FLV-EXT-DATA:ephemeral  | 0                                    |
+| disk                       | 200                                  |
+| extra_specs                | {}                                   |
+| id                         | feab403d-cce1-4a18-82ef-d41c45486120 |
+| name                       | m1.4xlarge                           |
+| os-flavor-access:is_public | True                                 |
+| ram                        | 122880                               |
+| rxtx_factor                | 1.0                                  |
+| swap                       |                                      |
+| vcpus                      | 11                                   |
++----------------------------+--------------------------------------+
