@@ -1,3 +1,6 @@
 Initially, OpenStack is deployed without LDAP,
 after LDAP is connected, create tenant and net
 for all the LDAP account.
+
+Once new account is added in LDAP, these two
+scripts should be run.

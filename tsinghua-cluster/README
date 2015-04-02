@@ -1,1 +1,9 @@
 Tsinghua University OpenStack+Ceph Deployment
+
+chef-openstack-cookbooks
+------------------------
+The Chef Cookbook for Tsinghua cluster
+
+scripts
+-------
+All the scripts for backup/deployment OpenStack 
